@@ -1,112 +1,101 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Bebas+Neue" rel="stylesheet">
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>greeting2</title>
-
-    <style>
-        body {
-            background-color: transparent;
-            color: #D9BCAF;
-            line-height: 1.6;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .card {
-            padding: 10px 25px;
-            border-radius: 10px;
-            width: 85vw;
-            color: #D9BCAF;
-            box-shadow: 2px 2px 1px 0px #330835;
-            background-color: #8A9688;
-            text-align: center;
-            white-space: nowrap;
-        }
-
-        .clock {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 2em;
-        }
-
-        .time {
-            min-width: 37px;
-            display: inline-block;
-        }
-
-        .colon {
-            font-size: 1.1em;
-            display: inline-block;
-        }
-
-        .date,
-        .greet {
-            font-family: 'Bebas Neue', cursive;
-            font-size: 2em;
-            padding-right: 30px;
-            white-space: nowrap;
-        }
-
-        .greet {
-            font-family: 'Dancing Script', cursive;
-            font-size: 2rem;
-        }
-    </style>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Bebas+Neue" rel="stylesheet" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Greeting Widget</title>
+  <style>
+    body {
+      background-color: transparent;
+      line-height: 1.6;
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #D9BCAF;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .card {
+      padding: 10px 25px;
+      border-radius: 10px;
+      background-color: #8A9688;
+      width: 85vw;
+      color: #D9BCAF;
+      box-shadow: 2px 2px 1px 0px #330835;
+      text-align: center;
+      white-space: nowrap;
+    }
+    .greet {
+      font-family: 'Dancing Script', cursive;
+      font-size: 2rem;
+      padding-right: 30px;
+      white-space: nowrap;
+    }
+    .date {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2em;
+      padding-right: 30px;
+      white-space: nowrap;
+      display: inline-block;
+    }
+    .clock {
+      font-family: 'Bebas Neue', cursive;
+      font-size: 2em;
+      display: inline-block;
+    }
+    .time {
+      min-width: 37px;
+      display: inline-block;
+    }
+    .colon {
+      font-size: 1.1em;
+      display: inline-block;
+    }
+  </style>
 </head>
 <body>
-    <div class="card">
-        <div class="greet" id="greet"></div>
-        <div class="date" id="date"></div>
-        <div class="clock">
-            <div class="time" id="hour"></div>
-            <div class="colon">:</div>
-            <div class="time" id="min"></div>
-            <div class="colon">:</div>
-            <div class="time" id="sec"></div>
-        </div>
+  <div class="card">
+    <div class="greet" id="greet"></div>
+    <div class="date" id="date"></div>
+    <div class="clock">
+      <div class="time" id="hour"></div>
+      <div class="colon">:</div>
+      <div class="time" id="min"></div>
+      <div class="colon">:</div>
+      <div class="time" id="sec"></div>
     </div>
-
-    <script>
-        function date() {
-            var oggi = new Date();
-            var giorno = String(oggi.getDate()).padStart(2, '0');
-            var mese = String(oggi.getMonth() + 1).padStart(2, '0');
-            var anno = oggi.getFullYear();
-            document.getElementById('date').innerHTML = giorno + '/' + mese + '/' + anno;
-        }
-
-        function clock() {
-            var oggi = new Date();
-            var ore = String(oggi.getHours()).padStart(2, '0');
-            var minuti = String(oggi.getMinutes()).padStart(2, '0');
-            var secondi = String(oggi.getSeconds()).padStart(2, '0');
-
-            var oreAttuali = oggi.getHours();
-            var saluto = '';
-            if (oreAttuali < 12) saluto = 'Good Morning';
-            else if (oreAttuali >= 12 && oreAttuali <= 17) saluto = 'Good Afternoon';
-            else saluto = 'Good Evening';
-            document.getElementById('greet').innerHTML = saluto;
-
-            document.getElementById('hour').innerHTML = ore;
-            document.getElementById('min').innerHTML = minuti;
-            document.getElementById('sec').innerHTML = secondi;
-        }
-
-        function dateTime() {
-            date();
-            clock();
-            setTimeout(dateTime, 500);
-        }
-
-        dateTime();
-    </script>
+  </div>
+  <script>
+    function date() {
+      var oggi = new Date();
+      var giorno = String(oggi.getDate()).padStart(2, '0');
+      var mese = String(oggi.getMonth() + 1).padStart(2, '0');
+      var anno = oggi.getFullYear();
+      document.getElementById('date').innerHTML = giorno + '/' + mese + '/' + anno;
+    }
+    function clock() {
+      var oggi = new Date();
+      var ore = String(oggi.getHours()).padStart(2, '0');
+      var minuti = String(oggi.getMinutes()).padStart(2, '0');
+      var secondi = String(oggi.getSeconds()).padStart(2, '0');
+      var oreAttuali = oggi.getHours();
+      var saluto = '';
+      if (oreAttuali < 12) saluto = 'Good Morning';
+      else if (oreAttuali >= 12 && oreAttuali <= 17) saluto = 'Good Afternoon';
+      else saluto = 'Good Evening';
+      document.getElementById('greet').innerHTML = saluto;
+      document.getElementById('hour').innerHTML = ore;
+      document.getElementById('min').innerHTML = minuti;
+      document.getElementById('sec').innerHTML = secondi;
+    }
+    function dateTime() {
+      date();
+      clock();
+      setTimeout(dateTime, 500);
+    }
+    dateTime();
+  </script>
 </body>
 </html>
